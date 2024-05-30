@@ -1,6 +1,6 @@
 import { Box, Button, Skeleton, Spinner } from '@radix-ui/themes';
 
-const LoadingNewIssuePage = () => {
+const IssueFormSkeleton = () => {
   return (
     <Box className="max-w-xl space-y-3">
       <Skeleton width={'100%'} height={'30px'}></Skeleton>
@@ -12,4 +12,4 @@ const LoadingNewIssuePage = () => {
   );
 };
 
-export default LoadingNewIssuePage;
+export default IssueFormSkeleton;
