@@ -5,7 +5,14 @@ import React from 'react';
 import { FaBug } from 'react-icons/fa6';
 import classnames from 'classnames';
 import { useSession } from 'next-auth/react';
-import { Box, Container, Flex } from '@radix-ui/themes';
+import {
+  Avatar,
+  Box,
+  Container,
+  DropdownMenu,
+  Flex,
+  Text,
+} from '@radix-ui/themes';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -43,10 +50,28 @@ const Navbar = () => {
           </Flex>
           <Box>
             {status === 'authenticated' && (
-              <Link href="/api/auth/signout">Log out</Link>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger>
+                  <Avatar
+                    src={session.user!.image!}
+                    fallback="?"
+                    size="2"
+                    radius="full"
+                    className="cursor-pointer border-2 border-blue-600"
+                  />
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Content>
+                  <DropdownMenu.Label>
+                    <Text size="2">{session.user?.email}</Text>
+                  </DropdownMenu.Label>
+                  <DropdownMenu.Item>
+                    <Link href="/api/auth/signout">Log out</Link>
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Root>
             )}
             {status === 'unauthenticated' && (
-              <Link href="/api/auth/signin">Log in</Link>
+              <Link href="/api/auth/signin">Login</Link>
             )}
           </Box>
         </Flex>
