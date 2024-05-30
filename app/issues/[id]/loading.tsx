@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Heading, Skeleton } from '@radix-ui/themes';
+import { Box, Card, Heading, Skeleton } from '@radix-ui/themes';
 
 const LoadingIssueDetailPage = () => {
   return (
